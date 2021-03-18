@@ -27,6 +27,8 @@ class App extends Component{
     payingUser: [],
     currentUser: [],
     Amount: '',
+    error: '',
+    success: ''
 
   };
   // handleStatus = (props) =>{
@@ -73,16 +75,19 @@ class App extends Component{
     this.handleStatus("login")
     this.setState({
       username: '',
-      firstname: 'khushboo',
-      lastname: 'dalwani',
-      password: '',
-      confirmpassword: '',
-      emailid: '',
-      accountno: '',
-      allusers: [],
-      balance: '',
-      payingUser: [],
-      currentUser: [],
+    firstname: '',
+    lastname: '',
+    password: '',
+    confirmpassword: '',
+    emailid: '',
+    accountno: '',
+    allusers: [],
+    balance: '',
+    payingUser: [],
+    currentUser: [],
+    Amount: '',
+    error: '',
+    success: ''
     })
   }
   handleCustPay = payinguser =>  {
@@ -101,10 +106,12 @@ class App extends Component{
   handlePay = () => {
     const payingUser = this.state.payingUser;
     const Amount = this.state.Amount;
+    const currentUser = this.state.currentUser;
     console.log("pay clicked")
     var Pay ={
       payingUser: payingUser,
       Amount: Amount,
+      currentUser: currentUser
     }
     axios.post('http://localhost:3000/paycust',Pay)
     .then(res => {

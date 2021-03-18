@@ -21,7 +21,7 @@ const connectDB = async () => {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindandModify: false,
+    useFindandModify: true,
   })
   .then(() => console.log("connected"))
   .catch((error) => console.log(error.message));
@@ -63,6 +63,7 @@ app.use(express.json());
 app.post('/user' , (req,res)=>
 {
   const {username,firstname,lastname,password,confirmpassword,emailid,accountno}=req.body;
+  let balance = 10000
   User.findOne({username:username}).then(user=>{
     if(user){
       res.json({status:'Signup',error:'username already exist'});
@@ -131,11 +132,28 @@ app.post('/login', function(req, res) {
   })
 });
 app.post('/paycust',function(req,res) {
-  const { payingUser , Amount } = req.body;
+  const { payingUser , Amount , currentUser } = req.body;
   console.log(payingUser.username)
   // payingUser.Amount + = Amount;
-  // User.findOneAndUpdate({username:payingUser.username},{$set:{balance:(int)balance+ (int)Amount}})
+  if(Amount <= 0)
+  {
+    res.json({error: "Amount can never be 0 or negative"})
+  } else {
+  User.findOne({username:currentUser.username}).then(user => {
+    if(user.balance < Amount)
+    {
+      res.json({error: "Insufficient Balance"})
+    }
+    else{
+      User.findOneAndUpdate({"username":currentUser.username},{$inc:{"balance":-Amount}}).then(user => {
+        User.findOneAndUpdate({"username":payingUser.username},{$inc:{"balance":Amount}}).then(user => {
+          res.json({success: "Payment Successfull"})
+        })
+      })
+    }
+  })
   console.log("amount done");
+  }
 
 });
 
