@@ -6,16 +6,7 @@ const bcrypt = require('bcryptjs');
 const bodyparse = require('body-parser');
 const User = require('./user');
 const app = express();
-// const jwt = require('jsonwebtoken');
-// var mongodb= require('mongodb');
-// const { Cursor } = require('mongodb');
-// var MongoClient= mongodb.MongoClient;
-//db connections
-// const URI =
-//   "mongodb+srv://NodeUser:nodejs@trio.umoww.mongodb.net/NodeDB?retryWrites=true&w=majority";
 const url = "mongodb://NodeUser:nodejs@trio-shard-00-00.umoww.mongodb.net:27017,trio-shard-00-01.umoww.mongodb.net:27017,trio-shard-00-02.umoww.mongodb.net:27017/NodeDB?ssl=true&replicaSet=atlas-72hs60-shard-0&authSource=admin&retryWrites=true&w=majority"
-// const ur = "mongodb+srv://NodeUser:nodejs@trio.umoww.mongodb.net/NodeDB?retryWrites=true&w=majority";
-// const PORT = process.env.PORT || 3000;
 const connectDB = async () => {
    mongoose.connect(url, {
     useUnifiedTopology: true,
@@ -25,41 +16,10 @@ const connectDB = async () => {
   })
   .then(() => console.log("connected"))
   .catch((error) => console.log(error.message));
-  // mongoose.set('useFindandModify',false);
 };
-// const db = process.env.DB_URL;
-// mongoose
-//   .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => {
-//     console.log("MongoDB connected");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-// const connectDB = async () => {
-//   await mongoose.connect(URI, {
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true,
-//   });
-//   console.log("DB connected");
-// };
-
 connectDB();
-//middleware
 app.use(cors());
 app.use(express.json());
-//routes
-// app.get('/',(req,res)=>{
-//     User.findOne()
-//     .exec()
-//     .then(result=>{
-//       console.log(result);
-//       res.status(200).send(result);
-//     })
-//     .catch(err=>{
-//       res.status(500).send(err);
-//     })
-// })
 app.post('/user' , (req,res)=>
 {
   const {username,firstname,lastname,password,confirmpassword,emailid,accountno}=req.body;
@@ -100,9 +60,7 @@ app.post('/user' , (req,res)=>
     .catch(err=>{
         console.log(err);
         res.status(500).json({msg:"Error occured"})
-    })
-    // res.json({status:'login'});
-  
+    })  
             }
           })
         }
@@ -134,7 +92,6 @@ app.post('/login', function(req, res) {
 app.post('/paycust',function(req,res) {
   const { payingUser , Amount , currentUser } = req.body;
   console.log(payingUser.username)
-  // payingUser.Amount + = Amount;
   if(Amount <= 0)
   {
     res.json({error: "Amount can never be 0 or negative"})
