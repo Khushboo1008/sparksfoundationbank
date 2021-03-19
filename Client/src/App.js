@@ -11,6 +11,7 @@ import Customers from './components/customers';
 import Dashnav from './components/dashnav';
 import Pay from './components/Pay';
 import Payuser from './components/payuser';
+import Errors from './components/error';
 
 class App extends Component{
   state = {
@@ -28,7 +29,13 @@ class App extends Component{
     currentUser: [],
     Amount: '',
     error: '',
-    success: ''
+    success: '',
+    visible: 'none',
+    error: '',
+    success: '',
+    errors : [],
+    successmsg : []
+    // setShow: 'false'
 
   };
   // handleStatus = (props) =>{
@@ -74,7 +81,7 @@ class App extends Component{
   handleLogout = () => {
     this.handleStatus("login")
     this.setState({
-      username: '',
+    username: '',
     firstname: '',
     lastname: '',
     password: '',
@@ -87,7 +94,10 @@ class App extends Component{
     currentUser: [],
     Amount: '',
     error: '',
-    success: ''
+    success: '',
+    errors : [],
+    successmsg : []
+
     })
   }
   handleCustPay = payinguser =>  {
@@ -116,9 +126,11 @@ class App extends Component{
     axios.post('http://localhost:3000/paycust',Pay)
     .then(res => {
       console.log(res);
+      if(res.data.error)
+      this.setState({error:res.data.error})
     })
     .catch(err => {
-      console.log("error occured")
+      alert(err)
     })
   }
 
@@ -143,6 +155,15 @@ class App extends Component{
     axios.post('http://localhost:3000/user',signupData)
     .then(res => {
       console.log(res);
+      let error = res.data.error;
+      // let success = res.data.success;
+      if(error!="noerror")
+      {
+        this.state.errors.push(error);
+        this.handleStatus(res.data.status)
+        this.setState({ error:error })
+        this.setState({visible: "true"})
+      }
       this.handleStatus(res.data.status)
       // this.setState({status:res.data.status})
     })
@@ -169,9 +190,19 @@ class App extends Component{
       axios.post('http://localhost:3000/login',{username,password})
       .then(res => {
         console.log(res);
+        let error =res.data.error
+        if(error!="noerror")
+      {
+        this.state.errors.push(error);
+        this.setState({ error:error })
+        this.setState({visible: "true"})
         this.handleStatus(res.data.status)
+      }
+      else{
         this.setState({allusers:res.data.allusers})
         this.setState({currentUser:res.data.user})
+        this.handleStatus(res.data.status)
+      }
       })
       .catch(err=>{
         console.log(err)
@@ -188,8 +219,14 @@ class App extends Component{
   //   }
   // }
   render(){
-  if(this.state.status === "login"){
+    let messagestatus = "none";
+  
+  if(this.state.errors.length!=0){
+  messagestatus = "show";
+  }
+    if(this.state.status === "login"){
     return (
+      <div>
           <Login 
             onLogin={this.handleLogin}
             handleStatus={this.handleStatus}
@@ -197,9 +234,14 @@ class App extends Component{
             handlepassword={this.handlepassword}
             handleLogin={this.handleLogin}
           />
+          <div style = {{ display: messagestatus}} >
+            <Errors/>
+          </div>
+        </div>  
       );
     } else if (this.state.status === "Signup"){
       return (
+        <div>
           <Signup
           handlefirstname={this.handlefirstname}
           handleusername={this.handleusername}
@@ -211,10 +253,15 @@ class App extends Component{
           validateForm={this.validateForm}
           handleStatus={this.handleStatus}
           />
+          <div style = {{ display: messagestatus}}>
+            <Errors/>
+          </div>          
+        </div>          
       );
   }
   else if(this.state.status === "Dashboard"){
     return(
+    <div> 
       <Dashboard 
         User={this.state.username}
         handleStatus={this.handleStatus}
@@ -222,6 +269,10 @@ class App extends Component{
         handleUserPay={this.handleUserPay}
         currentUser={this.state.currentUser}
       />
+      <div style = {{ display: messagestatus}}>
+        <Errors/>
+      </div>      
+    </div>  
     ); 
   }else if(this.state.status === "Customers")
   {
@@ -232,6 +283,9 @@ class App extends Component{
         handleCustPay={this.handleCustPay}
         handleStatus={this.handleStatus}
       />
+      <div style = {{ display: messagestatus}}>
+        <Errors/>
+      </div> 
     </div>
     );
   }else if(this.state.status === "Pay")
@@ -248,6 +302,9 @@ class App extends Component{
           handleAmount={this.handleAmount}
           handlePay={this.handlePay}
         />
+        {/* <div style = {{ display: messagestatus}}>
+        <Errors/>
+      </div>  */}
       </div>
     );
   }else if(this.state.status === "Payuser")
@@ -261,11 +318,15 @@ class App extends Component{
       <Payuser 
         payingUser={this.state.payingUser}
         handleStatus={this.handleStatus}
+        currentUser={this.state.currentUser}
       />
+      <div style = {{ display: messagestatus}}>
+        <Errors/>
+      </div> 
       </div>
     )
   }
-
-  }
 }
+}
+
 export default App;

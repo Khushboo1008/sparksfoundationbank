@@ -25,10 +25,10 @@ const Pay = (props) => {
             </div>
         </div>
         <div className="row">
-            <div className="col-25 mr-5 mt-3">
+            <div className="col-25 mr-5 mt-5">
             <button onClick={() => props.handleStatus("Customers")} type="button" class="btn btn-primary" style={Style.paybutton}>BACK</button>
             </div>
-            <div className="col-75 ml-5 mt-3">
+            <div className="col-75 ml-5 mt-5">
             <button onClick={() => props.handlePay()} type="button" class="btn btn-primary" style={Style.paybutton}>PAY</button>
             </div>
         </div>

@@ -24,20 +24,20 @@ app.post('/user' , (req,res)=>
 {
   const {username,firstname,lastname,password,confirmpassword,emailid,accountno}=req.body;
   let balance = 10000
-  User.findOne({username:username}).then(user=>{
+  User.findOne({accountno:accountno}).then(user=>{
     if(user){
-      res.json({status:'Signup',error:'username already exist'});
+      res.json({status:'Signup',error:'accountno already exist'});
     }
     else{
       User.findOne({emailid:emailid}).then(user => {
         if(user){
-          res.json({status:'Signup',error:'username already exist'});
+          res.json({status:'Signup',error:'emailid already exist'});
         }
         else
         {
-          User.findOne({accountno:accountno}).then(user =>{
+          User.findOne({username:username}).then(user =>{
             if(user){
-              res.json({status:'Signup',error:'accountno already exist'});
+              res.json({status:'Signup',error:'username already exist'});
             }
             else{
                 const user = new User({
@@ -81,7 +81,7 @@ app.post('/login', function(req, res) {
       if(user.password==password)
       {
         console.log("login successfull");
-        res.json({status:"Dashboard",allusers,user});
+        res.json({status:"Dashboard",allusers,user,error: "noerror"});
       }
     }
     else{

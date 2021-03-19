@@ -9,10 +9,10 @@ const Payuser = (props) => {
             width="100" height="100"/>
             <div className="row mt-3">
             <div className="col-25">
-                <label for="fname">Username :</label>
+                <label for="fname" style={{fontSize: "160%",fontFamily: "-moz-initial"}}>Username :</label>
             </div>
             <div className="col-75 ml-4">
-            <input type="Number" style={{marginLeft: "10%"}} ></input>
+            <span type="Number" style={{marginLeft: "10%",fontSize: "160%",fontFamily: "-moz-initial"}} > {props.currentUser.username} </span>
             </div>
         </div>
         <div className="row mt-4">

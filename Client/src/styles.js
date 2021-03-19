@@ -104,7 +104,7 @@ module.exports={
     amount: {
         position: "absolute",
         top: "67%",
-        left: "15%"
+        left: "15%",
     },
     payflex: {
         position: "absolute",

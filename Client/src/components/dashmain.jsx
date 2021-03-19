@@ -10,10 +10,10 @@ const Dashmain = (props) => {
                 <button onClick={() => props.handleStatus("Customers")} type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Customers</button>
             </div>
             <div className={"pt-3 pb-3"}>
-                <button type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Transaction History</button>
+            <button onClick={() => props.handleUserPay()} type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Profile</button>
             </div>
             <div className={"pt-3 pb-2"}>
-                <button onClick={() => props.handleUserPay()} type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Pay</button>
+                <button onClick={() => props.handleUserPay()} type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Logout</button>
             </div>
         </div>
      );
