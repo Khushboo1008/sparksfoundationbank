@@ -215,6 +215,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //server
-app.listen(3000,()=>{
-    console.log('server was connected on port');
+app.listen(PORT,()=>{
+    console.log('server was connected on port'+PORT);
 })
