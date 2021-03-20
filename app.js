@@ -203,9 +203,17 @@ app.post('/paycust',function(req,res) {
 //     res.status(500).json({msg:"error occured"});
 //   })
 // })
-
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'Client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'Client/build', 'index.html'));
+  });
+}
 
 //server
 app.listen(3000,()=>{
-    console.log('server was connected on port:3000');
+    console.log('server was connected on port');
 })
