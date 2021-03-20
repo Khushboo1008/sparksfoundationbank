@@ -29,7 +29,7 @@ const Pay = (props) => {
             <button onClick={() => props.handleStatus("Customers")} type="button" class="btn btn-primary" style={Style.paybutton}>BACK</button>
             </div>
             <div className="col-75 ml-5 mt-5">
-            <button onClick={() => props.handlePay()} type="button" class="btn btn-primary" style={Style.paybutton}>PAY</button>
+            <button onClick={() => props.handlePay()} type="submit" class="btn btn-primary" style={Style.paybutton}>PAY</button>
             </div>
         </div>
     </div> 
