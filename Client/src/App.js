@@ -205,7 +205,8 @@ class App extends Component{
         console.log(res);
         let error =res.data.error
         alert(error)
-        this.setState({allusers:res.data.allusers})
+        let allusers=res.data.allusers
+        this.setState({allusers:allusers})
         this.setState({currentUser:res.data.user})
         this.handleStatus(res.data.status)
       
