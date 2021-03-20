@@ -167,15 +167,9 @@ class App extends Component{
     axios.post('/user',signupData)
     .then(res => {
       console.log(res);
-      let error = res.data.error;
       // let success = res.data.success;
-      if(error!="noerror")
-      {
-        this.state.errors.push(error);
-        this.handleStatus(res.data.status)
-        this.setState({ error:error })
-        this.setState({visible: "true"})
-      }
+      let error =res.data.error
+      alert(error)
       this.handleStatus(res.data.status)
       // this.setState({status:res.data.status})
     })
