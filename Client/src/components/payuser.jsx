@@ -12,7 +12,7 @@ const Payuser = (props) => {
                 <label for="fname" style={{fontSize: "160%",fontFamily: "-moz-initial"}}>Name<span style={{marginLeft: "9vh"}}> :</span></label>
             </div>
             <div className="col-75 ml-1">
-            <span type="Number" style={{fontSize: "160%",fontFamily: "-moz-initial"}} >khushboo dalwani </span>
+            <span type="Number" style={{fontSize: "160%",fontFamily: "-moz-initial"}} >{props.currentUser.firstname} {props.currentUser.lastname} </span>
             </div>
         </div>
         <div className="row">

@@ -89,7 +89,9 @@ module.exports={
     },
     table:{
         marginLeft: "10%",
-        width: "80%"
+        width: "80%",
+        position: "absolute",
+        top: "12%"
     },
     logo: {
         marginLeft: "35%"

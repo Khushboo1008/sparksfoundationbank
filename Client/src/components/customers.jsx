@@ -19,7 +19,7 @@ const Customers = (props) => {
             <table className="table table-sm" style={Style.table}>
                 <thead>
                     <tr className="table-active">
-                        <th style={{color: "white"}} >Name</th>
+                        <th style={{color: "white"}} >Username</th>
                         <th style={{color: "white"}} >Email id</th>
                         <th style={{color: "white"}} >Accountno</th>
                         <th style={{color: "white"}} >Balance</th>
@@ -31,7 +31,7 @@ const Customers = (props) => {
                 </tbody>
 
             </table>
-            <button onClick={() =>props.handleStatus("Dashboard")} key={allusers.id} type="button" className="btn btn-primary pl-5 pr-5" style={{marginLeft: "42%"}}>Prev</button>
+            <button onClick={() =>props.handleStatus("Dashboard")} key={allusers.id} type="button" className="btn btn-primary pl-5 pr-5" style={{marginLeft: "10%",position : "absolute",top:"5 %"}}>Prev</button>
         </div>
   );
   }

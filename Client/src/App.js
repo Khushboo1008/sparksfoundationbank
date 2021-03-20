@@ -152,6 +152,8 @@ class App extends Component{
     const accountno = this.state.accountno;
     if(username=='' || firstname== '' || lastname== '' || password== '' || confirmpassword== '' || emailid=='' || accountno=='')
     alert("please fill all the required Details❌")
+    else if(accountno.length<10||accountno.length>10)
+    alert("Account no should be 10 digit ❌")
     else{
     var signupData = {
       firstname          :    firstname,
