@@ -6,7 +6,8 @@ const bcrypt = require('bcryptjs');
 const bodyparse = require('body-parser');
 const User = require('./user');
 const app = express();
-const url = "mongodb://NodeUser:nodejs@trio-shard-00-00.umoww.mongodb.net:27017,trio-shard-00-01.umoww.mongodb.net:27017,trio-shard-00-02.umoww.mongodb.net:27017/NodeDB?ssl=true&replicaSet=atlas-72hs60-shard-0&authSource=admin&retryWrites=true&w=majority"
+const url = "mongodb+srv://NodeUser:nodejs@trio.umoww.mongodb.net/NodeDB?retryWrites=true&w=majority";
+// const url = "mongodb://NodeUser:nodejs@trio-shard-00-00.umoww.mongodb.net:27017,trio-shard-00-01.umoww.mongodb.net:27017,trio-shard-00-02.umoww.mongodb.net:27017/NodeDB?ssl=true&replicaSet=atlas-72hs60-shard-0&authSource=admin&retryWrites=true&w=majority"
 const PORT = process.env.PORT || 3000;
 const connectDB = async () => {
    mongoose.connect(url, {

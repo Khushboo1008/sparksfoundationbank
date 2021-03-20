@@ -129,7 +129,7 @@ class App extends Component{
       Amount: Amount,
       currentUser: currentUser
     }
-    axios.post('http://localhost:3000/paycust',Pay)
+    axios.post('/paycust',Pay)
     .then(res => {
       console.log(res);
       if(res.data.error)
@@ -150,7 +150,7 @@ class App extends Component{
     const confirmpassword = this.state.confirmpassword;
     const emailid = this.state.emailid;
     const accountno = this.state.accountno;
-    if(username=='' || firstname== '' || lastname== '' || password== '' || confirmpassword== '' || emailid== '' || accountno== '')
+    if(username=='' || firstname== '' || lastname== '' || password== '' || confirmpassword== '' || emailid=='' || accountno=='')
     alert("please fill all the required Details❌")
     else{
     var signupData = {
@@ -162,7 +162,7 @@ class App extends Component{
       emailid            :    emailid,
       accountno          :    accountno
     }
-    axios.post('http://localhost:3000/user',signupData)
+    axios.post('/user',signupData)
     .then(res => {
       console.log(res);
       let error = res.data.error;
@@ -200,7 +200,7 @@ class App extends Component{
     if(username==''||password=='')
     alert("Please fill the required details ❌")
     else{
-      axios.post('http://localhost:3000/login',{username,password})
+      axios.post('/login',{username,password})
       .then(res => {
         console.log(res);
         let error =res.data.error
