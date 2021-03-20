@@ -15,7 +15,7 @@ import Errors from './components/error';
 
 class App extends Component{
   state = {
-    status: 'login',
+    status: 'Payuser',
     username: '',
     firstname: '',
     lastname: '',
@@ -101,8 +101,14 @@ class App extends Component{
     })
   }
   handleCustPay = payinguser =>  {
-    this.setState({payingUser:payinguser})
+    if(payinguser.username == this.state.currentUser.username){
+      alert("You are not allowed to pay yourself ❌")
+      console.log("error")
+      }
+    else{
+      this.setState({payingUser:payinguser})
     this.handleStatus("Pay")
+    }
 
   }
   handleUserPay = () => {
@@ -127,11 +133,13 @@ class App extends Component{
     .then(res => {
       console.log(res);
       if(res.data.error)
-      this.setState({error:res.data.error})
+      alert(res.data.error)
+      // this.handleStatus(res.data.status)
     })
     .catch(err => {
       alert(err)
     })
+  
   }
 
   validateForm = () => {
@@ -142,7 +150,9 @@ class App extends Component{
     const confirmpassword = this.state.confirmpassword;
     const emailid = this.state.emailid;
     const accountno = this.state.accountno;
-
+    if(username=='' || firstname== '' || lastname== '' || password== '' || confirmpassword== '' || emailid== '' || accountno== '')
+    alert("please fill all the required Details❌")
+    else{
     var signupData = {
       firstname          :    firstname,
       username           :    username,
@@ -180,33 +190,30 @@ class App extends Component{
     accountno: '',
     
   })
+}
   // console.log(res.status.status)
   }
   handleLogin = async e => {
     // e.preventDefault()
-    let s;
     const username = this.state.username;
     const password = this.state.password;
+    if(username==''||password=='')
+    alert("Please fill the required details ❌")
+    else{
       axios.post('http://localhost:3000/login',{username,password})
       .then(res => {
         console.log(res);
         let error =res.data.error
-        if(error!="noerror")
-      {
-        this.state.errors.push(error);
-        this.setState({ error:error })
-        this.setState({visible: "true"})
-        this.handleStatus(res.data.status)
-      }
-      else{
+        alert(error)
         this.setState({allusers:res.data.allusers})
         this.setState({currentUser:res.data.user})
         this.handleStatus(res.data.status)
-      }
+      
       })
       .catch(err=>{
         console.log(err)
       })
+    }
       // this.handleStatus(s)
       // console.log('loggedin Successfully')
   }

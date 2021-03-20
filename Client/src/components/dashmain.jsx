@@ -13,7 +13,7 @@ const Dashmain = (props) => {
             <button onClick={() => props.handleUserPay()} type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Profile</button>
             </div>
             <div className={"pt-3 pb-2"}>
-                <button onClick={() => props.handleUserPay()} type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Logout</button>
+                <button onClick={() => props.handleLogout()} type="button" className="btn btn-primary btn-lg btn-block" style={Style.dashbutton}>Logout</button>
             </div>
         </div>
      );

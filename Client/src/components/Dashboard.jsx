@@ -12,6 +12,7 @@ const Dashboard = (props) => {
             <Dashmain User={props.User}
             handleStatus={props.handleStatus}
             handleUserPay={props.handleUserPay}
+            handleLogout={props.handleLogout}
             />
             {/* <h1>{props.allusers}</h1> */}
         </div>

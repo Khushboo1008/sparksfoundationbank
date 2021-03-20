@@ -109,7 +109,7 @@ module.exports={
     payflex: {
         position: "absolute",
         top: "20%",
-        width: "25%",
+        width: "27%",
         left: "35%",
         height: "60%",
         border: "10%",

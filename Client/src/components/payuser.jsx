@@ -9,36 +9,43 @@ const Payuser = (props) => {
             width="100" height="100"/>
             <div className="row mt-3">
             <div className="col-25">
-                <label for="fname" style={{fontSize: "160%",fontFamily: "-moz-initial"}}>Username :</label>
+                <label for="fname" style={{fontSize: "160%",fontFamily: "-moz-initial"}}>Name<span style={{marginLeft: "9vh"}}> :</span></label>
             </div>
-            <div className="col-75 ml-4">
-            <span type="Number" style={{marginLeft: "10%",fontSize: "160%",fontFamily: "-moz-initial"}} > {props.currentUser.username} </span>
-            </div>
-        </div>
-        <div className="row mt-4">
-            <div className="col-25">
-                <label for="fname">Account No :</label>
-            </div>
-            <div className="col-75 ml-2">
-            <input type="Number" style={{marginLeft: "11%"}}></input>
-            </div>
-        </div>
-        <div className="row mt-4">
-            <div className="col-25">
-                <label for="fname">Amount :</label>
-            </div>
-            <div className="col-75 ml-4">
-                <input type="Number" style={{marginLeft: "16%"}}></input>
+            <div className="col-75 ml-1">
+            <span type="Number" style={{fontSize: "160%",fontFamily: "-moz-initial"}} >khushboo dalwani </span>
             </div>
         </div>
         <div className="row">
-            <div className="col-25 mr-5">
-            <button onClick={() => props.handleStatus("Dashboard")} type="button" class="btn btn-primary mt-5" style={{width: "150%",marginLeft: "50%"}}>BACK</button>
+            <div className="col-25">
+                <label for="fname" style={{fontSize: "160%",fontFamily: "-moz-initial"}}>AccountNo<span className="ml-3">:</span></label>
             </div>
-            <div className="col-75 ml-5">
-            <button onClick={() => props.handleUserPay()} type="button" class="btn btn-primary mt-5" style={{width: "180%",marginLeft: "50%"}}>PAY</button>
+            <div className="col-75 ml-1">
+            <span type="Number" style={{fontSize: "160%",fontFamily: "-moz-initial"}} > {props.currentUser.accountno} </span>
             </div>
         </div>
+        <div className="row">
+            <div className="col-25">
+                <label for="fname" style={{fontSize: "160%",fontFamily: "-moz-initial"}}>Email Id<span className="ml-5">:</span></label>
+            </div>
+            <div className="col-75 ml-1">
+            <span type="Number" style={{fontSize: "160%",fontFamily: "-moz-initial"}} > {props.currentUser.emailid} </span>            </div>
+        </div>
+        <div className="row">
+            <div className="col-25">
+                <label for="fname" style={{fontSize: "160%",fontFamily: "-moz-initial"}}>Balance<span className="ml-5">:</span></label>
+            </div>
+            <div className="col-75 ml-1">
+            <span type="Number" style={{fontSize: "160%",fontFamily: "-moz-initial"}} > ₹ {props.currentUser.balance} </span>            </div>
+        </div>
+        <div className="row ml-1">
+            <div className="col-25 mr-5">
+            <button onClick={() => props.handleStatus("Dashboard")} type="button" class="btn btn-primary mt-3" style={{width: "150%",marginLeft: "150%"}}>BACK</button>
+            </div>
+            {/* <div className="col-75 ml-5">
+            <button onClick={() => props.handleUserPay()} type="button" class="btn btn-primary mt-5" style={{width: "180%",marginLeft: "50%"}}>PAY</button>
+            </div> */}
+        </div>
+        
         {/* https://www.youtube.com/watch?v=tFq6Q_muwG0 */}
     </div> 
     );

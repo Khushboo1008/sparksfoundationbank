@@ -26,18 +26,18 @@ app.post('/user' , (req,res)=>
   let balance = 10000
   User.findOne({accountno:accountno}).then(user=>{
     if(user){
-      res.json({status:'Signup',error:'accountno already exist'});
+      res.json({status:'Signup',error:'accountno already exist❌'});
     }
     else{
       User.findOne({emailid:emailid}).then(user => {
         if(user){
-          res.json({status:'Signup',error:'emailid already exist'});
+          res.json({status:'Signup',error:'emailid already exist❌'});
         }
         else
         {
           User.findOne({username:username}).then(user =>{
             if(user){
-              res.json({status:'Signup',error:'username already exist'});
+              res.json({status:'Signup',error:'username already exist❌'});
             }
             else{
                 const user = new User({
@@ -55,7 +55,7 @@ app.post('/user' , (req,res)=>
     user.save()
     .then(result=>{
         console.log(result);
-        res.json({status: 'login'});
+        res.json({status: 'login',error: "Registeration successful ☑"});
     })
     .catch(err=>{
         console.log(err);
@@ -81,34 +81,41 @@ app.post('/login', function(req, res) {
       if(user.password==password)
       {
         console.log("login successfull");
-        res.json({status:"Dashboard",allusers,user,error: "noerror"});
+        res.json({status:"Dashboard",allusers,user,error: "Login Successfull ☑"});
+      }
+      else{
+        res.json({status: "login",error:"Invalid Password❌"})
       }
     }
     else{
-      res.json({status: "login",error:"User does not exist"})
+      res.json({status: "login",error:"User does not exist❌"})
     }
   })
 });
 app.post('/paycust',function(req,res) {
   const { payingUser , Amount , currentUser } = req.body;
   console.log(payingUser.username)
+  if(payingUser === currentUser)
+  res.json({status:"Customers",error: "You are not allowed to pay yourself"})
+  else{
   if(Amount <= 0)
   {
-    res.json({error: "Amount can never be 0 or negative"})
+    res.json({error: "Amount can never be 0 or negative❌"})
   } else {
   User.findOne({username:currentUser.username}).then(user => {
     if(user.balance < Amount)
     {
-      res.json({error: "Insufficient Balance"})
+      res.json({error: "Insufficient Balance❌"})
     }
     else{
       User.findOneAndUpdate({"username":currentUser.username},{$inc:{"balance":-Amount}}).then(user => {
         User.findOneAndUpdate({"username":payingUser.username},{$inc:{"balance":Amount}}).then(user => {
-          res.json({success: "Payment Successfull"})
+          res.json({ status:"Customers",error: "Payment Successfull ☑  Please login again"})
         })
       })
     }
   })
+}
   console.log("amount done");
   }
 
