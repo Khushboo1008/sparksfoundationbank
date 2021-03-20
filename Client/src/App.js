@@ -15,7 +15,7 @@ import Errors from './components/error';
 
 class App extends Component{
   state = {
-    status: 'Payuser',
+    status: 'login',
     username: '',
     firstname: '',
     lastname: '',
