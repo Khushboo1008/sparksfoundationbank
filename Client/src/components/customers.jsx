@@ -6,7 +6,7 @@ const Customers = (props) => {
     const renderUser = (allusers , index)  => {
         return(
             <tr key={index}>
-                <td>{allusers.username}</td>
+                <td>{allusers.firstname} {allusers.lastname} </td>
                 <td>{allusers.emailid}</td>
                 <td>{allusers.accountno}</td>
                 <td>₹ {allusers.balance}</td>
@@ -19,7 +19,7 @@ const Customers = (props) => {
             <table className="table table-sm" style={Style.table}>
                 <thead>
                     <tr className="table-active">
-                        <th style={{color: "white"}} >Username</th>
+                        <th style={{color: "white"}} >Name</th>
                         <th style={{color: "white"}} >Email id</th>
                         <th style={{color: "white"}} >Accountno</th>
                         <th style={{color: "white"}} >Balance</th>
