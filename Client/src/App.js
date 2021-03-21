@@ -16,7 +16,7 @@ import History from './components/history';
 
 class App extends Component{
   state = {
-    status: 'Customers',
+    status: 'Signup',
     username: '',
     firstname: '',
     lastname: '',
