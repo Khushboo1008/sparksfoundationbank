@@ -134,7 +134,7 @@ class App extends Component{
       console.log(res);
       if(res.data.error)
       alert(res.data.error)
-      // this.handleStatus(res.data.status)
+      this.handleStatus(res.data.status)
     })
     .catch(err => {
       alert(err)
@@ -202,7 +202,7 @@ class App extends Component{
         let error =res.data.error
         alert(error)
         let allusers=res.data.allusers
-        this.setState({allusers:allusers})
+        this.setState({allusers})
         this.setState({currentUser:res.data.user})
         this.handleStatus(res.data.status)
       

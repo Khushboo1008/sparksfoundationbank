@@ -10,10 +10,10 @@ class Navbar extends Component {
                     <h1>THE SPARKS FOUNDATION</h1>
                     {/* <span style ={Style.divider} class="col-xs mr-2"></span> */}
                     <div style={Style.btn}>
-                    <button onClick={() => this.props.handleStatus("Signup")} type="button" className="btn btn-outline-primary p-2 mr-4">SIGNUP</button>
+                    <button onClick={() => this.props.handleStatus("Signup")} type="button" className="btn btn-primary p-2 mr-4">SIGNUP</button>
                     <span style ={Style.divider} class="col-xs"></span>
                      {/* <span class="breadcrumb-item active" aria-current="page"></span> */}
-                    <button onClick={() => this.props.handleStatus("login")} type="button" className="btn btn-outline-primary p-2">LOGIN</button>
+                    <button onClick={() => this.props.handleStatus("login")} type="button" className="btn btn-primary p-2">LOGIN</button>
                     </div>
                 </div>
             </div>

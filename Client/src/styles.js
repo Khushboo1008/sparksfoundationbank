@@ -105,15 +105,15 @@ module.exports={
     },
     amount: {
         position: "absolute",
-        top: "67%",
+        top: "64%",
         left: "15%",
     },
-    payflex: {
+    payuserflex: {
         position: "absolute",
         top: "20%",
-        width: "27%",
+        width: "33%",
         left: "35%",
-        height: "60%",
+        height: "52%",
         border: "10%",
         padding: "0%",
         // backgroundColor: "rgb(130, 165, 223)"
@@ -121,7 +121,7 @@ module.exports={
     },
     account: {
         position: "absolute",
-        top: "57%",
+        top: "50%",
         left: "15%"
     },
     number: {
@@ -135,9 +135,20 @@ module.exports={
     },
     paybutton: {
         position: "relative",
-        top: "450%",
+        top: "410%",
         left: "75%",
         width: "180%"
+    },
+    payflex: {
+        position: "absolute",
+        top: "20%",
+        width: "27%",
+        left: "35%",
+        height: "55%",
+        border: "10%",
+        padding: "0%",
+        // backgroundColor: "rgb(130, 165, 223)"
+        backgroundColor: "rgb(174, 202, 243)"
     }
 
 }

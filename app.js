@@ -112,7 +112,7 @@ app.post('/paycust',function(req,res) {
     else{
       User.findOneAndUpdate({"username":currentUser.username},{$inc:{"balance":-Amount}}).then(user => {
         User.findOneAndUpdate({"username":payingUser.username},{$inc:{"balance":Amount}}).then(user => {
-          res.json({ status:"Customers",error: "Payment Successfull ☑  Please login again"})
+          res.json({ status:"login",error: "Payment Successfull ☑  Please login again"})
         })
       })
     }
