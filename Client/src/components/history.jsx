@@ -8,6 +8,7 @@ const History = (props) => {
         return(
             <tr key={index}>
                 <td>{allusers.username}</td>
+                <td>{allusers.emailid}</td>
                 <td>{allusers.accountno}</td>
                 <td>{allusers.Amount}</td>
             </tr>
@@ -19,6 +20,7 @@ const History = (props) => {
             <thead>
                 <tr className="table-active">
                     <th style={{color: "white"}} >Username</th>
+                    <th style={{color: "white"}} >Email id</th>
                     <th style={{color: "white"}} >Accountno</th>
                     <th style={{color: "white"}} >Transaction</th>
                 </tr>
