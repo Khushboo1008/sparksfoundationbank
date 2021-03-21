@@ -121,7 +121,7 @@ module.exports={
     },
     account: {
         position: "absolute",
-        top: "50%",
+        top: "52%",
         left: "15%"
     },
     number: {
@@ -135,9 +135,9 @@ module.exports={
     },
     paybutton: {
         position: "relative",
-        top: "410%",
+        top: "280%",
         left: "75%",
-        width: "180%"
+        width: "160%"
     },
     payflex: {
         position: "absolute",
@@ -149,6 +149,12 @@ module.exports={
         padding: "0%",
         // backgroundColor: "rgb(130, 165, 223)"
         backgroundColor: "rgb(174, 202, 243)"
-    }
+    },
+    payuserbutton: {
+        position: "relative",
+        top: "360%",
+        left: "75%",
+        width: "160%"
+    },
 
 }
