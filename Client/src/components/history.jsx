@@ -31,6 +31,7 @@ const History = (props) => {
 
         </table>
         <button onClick={() =>props.handleStatus("Dashboard")} key={allusers.id} type="button" className="btn btn-primary pl-5 pr-5" style={{marginLeft: "10%",position : "absolute",top:"5%"}}>Prev</button>
+        <button onClick={() =>props.handleLogout()} key={allusers.id} type="button" className="btn btn-primary pl-5 pr-5" style={{marginLeft: "80%",position : "absolute",top:"5%"}}>Logout</button>
     </div>
      );
 }

@@ -16,7 +16,7 @@ import History from './components/history';
 
 class App extends Component{
   state = {
-    status: 'login',
+    status: 'Customers',
     username: '',
     firstname: '',
     lastname: '',
@@ -136,7 +136,7 @@ class App extends Component{
       console.log(res);
       if(res.data.error)
       alert(res.data.error)
-      this.handleStatus(res.data.status)
+      // this.handleStatus(res.data.status)
       this.handleLogout()
     })
     .catch(err => {
@@ -291,6 +291,7 @@ class App extends Component{
         allusers={this.state.allusers}
         handleCustPay={this.handleCustPay}
         handleStatus={this.handleStatus}
+        handleLogout={this.handleLogout}
       />
       <div style = {{ display: messagestatus}}>
         <Errors/>
@@ -340,6 +341,7 @@ class App extends Component{
         <History
         allusers={this.state.allhistory}
         handleStatus={this.handleStatus}
+        handleLogout={this.handleLogout}
         />
       </div>
     )
