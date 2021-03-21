@@ -137,6 +137,7 @@ class App extends Component{
       if(res.data.error)
       alert(res.data.error)
       this.handleStatus(res.data.status)
+      this.handleLogout()
     })
     .catch(err => {
       alert(err)
