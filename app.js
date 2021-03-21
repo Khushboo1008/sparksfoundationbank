@@ -99,14 +99,14 @@ app.post('/paycust',function(req,res) {
   console.log(payingUser.username)
   const payer={
      username:payingUser.username,
-     accountno:currentUser.accountno,
-     emailid: currentUser.emailid,
+     accountno:payingUser.accountno,
+     emailid: payingUser.emailid,
      Amount:"-"+"₹"+Amount
   }
   const accepter={
     username:currentUser.username,
-    accountno:payingUser.accountno,
-    emailid: payingUser.emailid,
+    accountno:currentUser.accountno,
+    emailid: currentUser.emailid,
     Amount:"+"+"₹"+Amount
  }
   if(payingUser === currentUser)
