@@ -58,7 +58,7 @@ module.exports={
         position: "absolute",
         right: "46%",
         // top: "0%",
-        width:"30%",
+        width:"0%",
         height: "80%",
         borderRight:"1px solid blue"
     },
@@ -67,7 +67,7 @@ module.exports={
         position: "absolute",
         right: "10%",
         top: "2%",
-        width:"30%",
+        width:"0%",
         height: "8%",
         borderRight:"1px solid blue"
     },
