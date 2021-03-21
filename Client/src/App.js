@@ -12,6 +12,7 @@ import Dashnav from './components/dashnav';
 import Pay from './components/Pay';
 import Payuser from './components/payuser';
 import Errors from './components/error';
+import History from './components/history';
 
 class App extends Component{
   state = {
@@ -34,7 +35,8 @@ class App extends Component{
     error: '',
     success: '',
     errors : [],
-    successmsg : []
+    successmsg : [],
+    allhistory: []
     // setShow: 'false'
 
   };
@@ -96,8 +98,8 @@ class App extends Component{
     error: '',
     success: '',
     errors : [],
-    successmsg : []
-
+    successmsg : [],
+    allhistory: []
     })
   }
   handleCustPay = payinguser =>  {
@@ -204,6 +206,8 @@ class App extends Component{
         let allusers=res.data.allusers
         this.setState({allusers})
         this.setState({currentUser:res.data.user})
+        let user=this.state.currentUser.history;
+        this.setState({allhistory:user})
         this.handleStatus(res.data.status)
       
       })
@@ -327,6 +331,15 @@ class App extends Component{
       <div style = {{ display: messagestatus}}>
         <Errors/>
       </div> 
+      </div>
+    )
+  }else if(this.state.status === "History"){
+    return(
+      <div>
+        <History
+        allusers={this.state.allhistory}
+        handleStatus={this.handleStatus}
+        />
       </div>
     )
   }

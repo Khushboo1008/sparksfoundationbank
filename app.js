@@ -52,7 +52,7 @@ app.post('/user' , (req,res)=>
        confirmpassword : req.body.confirmpassword,
        emailid : req.body.emailid,
        accountno : req.body.accountno,
-       balance: 10000
+       balance: 10000,
     });
     user.save()
     .then(result=>{
@@ -97,6 +97,16 @@ app.post('/login', function(req, res) {
 app.post('/paycust',function(req,res) {
   const { payingUser , Amount , currentUser } = req.body;
   console.log(payingUser.username)
+  const payer={
+     username:payingUser.username,
+     accountno:currentUser.accountno,
+     Amount:"-"+"₹"+Amount
+  }
+  const accepter={
+    username:currentUser.username,
+    accountno:payingUser.accountno,
+    Amount:"+"+"₹"+Amount
+ }
   if(payingUser === currentUser)
   res.json({status:"Customers",error: "You are not allowed to pay yourself"})
   else{
@@ -112,7 +122,11 @@ app.post('/paycust',function(req,res) {
     else{
       User.findOneAndUpdate({"username":currentUser.username},{$inc:{"balance":-Amount}}).then(user => {
         User.findOneAndUpdate({"username":payingUser.username},{$inc:{"balance":Amount}}).then(user => {
-          res.json({ status:"login",error: "Payment Successfull ☑  Please login again"})
+          User.findOneAndUpdate({"username":currentUser.username},{$addToSet:{"history":[payer]}}).then(user => {
+            User.findOneAndUpdate({"username":payingUser.username},{$addToSet:{"history":[accepter]}}).then(user=>{
+              res.json({ status:"login",error: "Payment Successfull ☑  Please login again"})
+            })
+          })
         })
       })
     }

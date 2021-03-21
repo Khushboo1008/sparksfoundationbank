@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     confirmpassword: {type:String,require:true},
     emailid: {type:String,require:true},
     accountno: {type:Number,require:true},
-    balance: {type:Number}
+    balance: {type:Number},
+    history:{type:Array}
 });
 module.exports = mongoose.model("User",userSchema);
